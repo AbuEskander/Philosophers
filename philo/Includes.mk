@@ -1,0 +1,3 @@
+SRCS = \
+	main.c\
+	
