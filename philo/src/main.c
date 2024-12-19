@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:56:54 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/19 19:28:18 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/19 19:30:12 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ int	main(int argc, char **argv)
 		display_error("Invalid number of arguments");
 	if (validate_input(argv))
 		return (EXIT_FAILURE);
-	return (0);
+	return (EXIT_SUCCESS);
 }
