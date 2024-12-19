@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/14 11:56:54 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/19 19:28:18 by abueskander      ###   ########.fr       */
+/*   Created: 2024/12/19 18:13:52 by abueskander       #+#    #+#             */
+/*   Updated: 2024/12/19 19:29:10 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-static int	validate_input(char **input)
+int	check_number(char *item)
 {
-	check_numbers(input);
-	if (input[5] && (ft_atoi(input[5]) < 0 || onlydigits(input[5])))
+	if (ft_atoi(item) <= 0 || onlydigits(item))
 	{
-		display_error("Invalid Input");
+		display_error("Invalid Input ");
 		return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
 }
 
-int	main(int argc, char **argv)
+int	check_numbers(char **number)
 {
-	(void)argv;
-	if (argc < MIN_ARGS || argc > MAX_ARGS)
-		display_error("Invalid number of arguments");
-	if (validate_input(argv))
-		return (EXIT_FAILURE);
-	return (0);
+	int	num;
+
+	num = 1;
+	while (num <= 4)
+		if (check_number(number[num++]))
+			return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
