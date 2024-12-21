@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 12:00:20 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/19 19:12:19 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/19 20:20:09 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,22 @@
 # define MAX_ARGS 6
 # define MIN_ARGS 5
 
+typedef struct s_philoso
+{
+        int     nop;
+        int     tts;
+        int     ttd;
+        int     tte;
+}       t_philoso;
+
+enum    e_inputs
+{
+        NUMBEROFP = 1,
+        TIMETODIE,
+        TIMETOEAT,
+        TIMETOSLEEP,
+        NUMBEROFMEALS
+};
 void	display_error(char *str);
 void	ft_putstr(char *str, int fd);
 int		ft_atoi(const char *nptr);
