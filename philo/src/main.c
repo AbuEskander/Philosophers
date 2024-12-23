@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:56:54 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/21 12:38:04 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/23 23:09:06 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	initilaize_inital_values(t_table *philoso, char **inputs)
 	if (inputs[NUMBEROFMEALS])
 		philoso->nuofm = ft_atoi(inputs[NUMBEROFMEALS]);
 	else
-		philoso->nuofm = -1;
+		philoso->nuofm = NOMEALCOUNT;
 }
 int	main(int argc, char **argv)
 {
@@ -42,8 +42,8 @@ int	main(int argc, char **argv)
 	if (validate_input(argv))
 		return (EXIT_FAILURE);
 	initilaize_inital_values(&table, argv);
-	//init_forks(table);
+	init_forks(&table);
 	init_threads(&table);
-	pthread_exit(EXIT_SUCCESS);
+	start_threading(&table);
 	return (EXIT_SUCCESS);
 }

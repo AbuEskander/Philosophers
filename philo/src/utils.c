@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 18:15:28 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/19 19:28:45 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/23 22:43:13 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void	ft_putstr(char *str, int fd)
 		write(fd, str++, 1);
 }
 
-int	ft_atoi(const char *nptr)
+long	ft_atoi(const char *nptr)
 {
-	int	res;
+	long	res;
 	int	sign;
 
 	res = 0;

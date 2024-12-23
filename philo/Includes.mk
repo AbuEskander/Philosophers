@@ -4,4 +4,5 @@ SRCS = \
 	utils.c\
 	checks.c\
 	threads.c\
-	routine.c
+	routine.c\
+	get_time_pro.c

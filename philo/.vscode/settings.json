@@ -2,6 +2,7 @@
         "files.associations": {
                 "*.ejs": "html",
                 ".env*": "dotenv",
-                "philo.h": "c"
+                "philo.h": "c",
+                "philo": "c"
         }
 }
