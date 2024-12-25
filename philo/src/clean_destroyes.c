@@ -12,17 +12,16 @@
 
 #include <philo.h>
 
-void     clean_destroyes(t_table *table)
+void	clean_destroyes(t_table *table)
 {
-        int     i;
-        
-        i = 0;
-        while(i < table->nop)
-        {
-                pthread_mutex_destroy(&table->forks[i]);
-                i++;
-        }
-        free(table->forks);
-        free(table->allphiloso);
-        
+	int i;
+
+	i = 0;
+	while (i < table->nop)
+	{
+		pthread_mutex_destroy(&table->forks[i]);
+		i++;
+	}
+	free(table->forks);
+	free(table->allphiloso);
 }

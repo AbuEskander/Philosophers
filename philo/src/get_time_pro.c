@@ -12,12 +12,12 @@
 
 #include <philo.h>
 
-size_t      get_time_fixed(void)
+size_t	get_time_fixed(void)
 {
-        struct timeval time;
-        size_t  current_time;
-        gettimeofday(&time,NULL);
+	struct timeval time;
+	size_t current_time;
+	gettimeofday(&time, NULL);
 
-        current_time = (time.tv_sec * 1000) + (time.tv_usec / 1000);
-        return (current_time);
-} 
+	current_time = (time.tv_sec * 1000) + (time.tv_usec / 1000);
+	return (current_time);
+}

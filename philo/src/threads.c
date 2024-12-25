@@ -14,7 +14,7 @@
 
 int	init_threads(t_table *table)
 {
-	int i;
+	int	i;
 
 	table->allphiloso = malloc(sizeof(t_philosofo) * table->nop);
 	if (!table->allphiloso)
@@ -40,30 +40,31 @@ int	init_forks(t_table *table)
 
 	i = 0;
 	table->forks = malloc(sizeof(pthread_mutex_t) * table->nop);
-	if(!table->forks)
-		return(EXIT_FAILURE);
-	while(i < table->nop)
+	if (!table->forks)
+		return (EXIT_FAILURE);
+	while (i < table->nop)
 	{
 		pthread_mutex_init(&table->forks[i], NULL);
 		i++;
 	}
-	return(EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }
 int	start_threading(t_table *table)
 {
-	int	i;
+	int i;
 
 	i = 0;
-	while(i < table->nop)
+	while (i < table->nop)
 	{
-		pthread_create(&table->allphiloso[i].tid,NULL,routine,&table->allphiloso[i]);
+		pthread_create(&table->allphiloso[i].tid, NULL, routine,
+				&table->allphiloso[i]);
 		i++;
 	}
 	i = 0;
-	while(i < table->nop)
+	while (i < table->nop)
 	{
 		pthread_join(table->allphiloso[i].tid, NULL);
 		i++;
 	}
-	return  (EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }
