@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:56:54 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/23 23:09:06 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/25 11:37:10 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ int	main(int argc, char **argv)
 	init_forks(&table);
 	init_threads(&table);
 	start_threading(&table);
+	clean_destroyes(&table);
 	return (EXIT_SUCCESS);
 }

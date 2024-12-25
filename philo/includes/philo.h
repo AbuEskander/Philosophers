@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 12:00:20 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/23 23:08:45 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/25 11:43:05 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ typedef struct s_philosopho
 	int				tte;
 	int				nuofm;
 	long long	last_meal;
-	pthread_mutex_t		leftf;
-	pthread_mutex_t		rightf;
+	pthread_mutex_t		*leftf;
+	pthread_mutex_t		*rightf;
 
 }					t_philosofo;
 
@@ -70,5 +70,6 @@ int					init_threads(t_table *table);
 size_t      get_time_fixed(void);
 int	init_forks(t_table *table);
 int	start_threading(t_table *table);
+void     clean_destroyes(t_table *table);
 
 #endif
