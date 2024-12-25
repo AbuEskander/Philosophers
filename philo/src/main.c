@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:56:54 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/25 11:37:10 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/25 11:45:14 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static int	validate_input(char **input)
 	}
 	return (EXIT_SUCCESS);
 }
+
 static void	initilaize_inital_values(t_table *philoso, char **inputs)
 {
 	philoso->nop = ft_atoi(inputs[NUMBEROFP]);
@@ -33,6 +34,7 @@ static void	initilaize_inital_values(t_table *philoso, char **inputs)
 	else
 		philoso->nuofm = NOMEALCOUNT;
 }
+
 int	main(int argc, char **argv)
 {
 	t_table	table;

@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 11:37:25 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/25 11:42:58 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/25 11:47:43 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	clean_destroyes(t_table *table)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < table->nop)

@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 12:00:20 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/25 11:43:05 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/25 11:44:55 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define MAX_ARGS 6
 # define MIN_ARGS 5
 # define NOMEALCOUNT -1
+
 typedef struct s_philosopho
 {
 	int				id;

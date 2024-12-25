@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:28:44 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/25 10:56:19 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/25 11:48:03 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	init_threads(t_table *table)
 	}
 	return (EXIT_SUCCESS);
 }
+
 int	init_forks(t_table *table)
 {
 	int	i;
@@ -49,9 +50,10 @@ int	init_forks(t_table *table)
 	}
 	return (EXIT_SUCCESS);
 }
+
 int	start_threading(t_table *table)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < table->nop)
