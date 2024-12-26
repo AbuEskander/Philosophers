@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 11:37:25 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/25 11:47:43 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/26 20:12:53 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	clean_destroyes(t_table *table)
 		pthread_mutex_destroy(&table->forks[i]);
 		i++;
 	}
+	free(table->dead);
 	free(table->forks);
 	free(table->allphiloso);
 }

@@ -7,4 +7,5 @@ SRCS = \
 	routine.c\
 	get_time_pro.c\
 	clean_destroyes.c\
-	actions.c
+	actions.c\
+	death.c

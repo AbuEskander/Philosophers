@@ -2,7 +2,7 @@ include Includes.mk
 SRC_DIR = src
 OBJ_DIR = build
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I./includes -pthread
+CFLAGS = -Wall -Werror -Wextra -I./includes -pthread -g
 NAME = philo
 SRCSDIR=$(addprefix src/,$(SRCS))
 

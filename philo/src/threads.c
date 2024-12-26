@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:28:44 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/26 13:48:37 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/26 21:45:34 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ int	init_threads(t_table *table)
 		table->allphiloso[i].tte = table->tte;
 		table->allphiloso[i].tts = table->tts;
 		table->allphiloso[i].sim_start = get_time_fixed();
+		table->allphiloso[i].last_meal = get_time_fixed();
 		table->allphiloso[i].leftf = &table->forks[i];
 		table->allphiloso[i].rightf = &table->forks[(i + 1) % table->nop];
+		table->allphiloso[i].death = table->dead;
+		table->allphiloso[i].did_i = &table->who_is_dead;
 		i++;
 	}
 	return (EXIT_SUCCESS);
@@ -41,13 +44,17 @@ int	init_forks(t_table *table)
 
 	i = 0;
 	table->forks = malloc(sizeof(pthread_mutex_t) * table->nop);
+	table->dead = malloc(sizeof(pthread_mutex_t));
 	if (!table->forks)
 		return (EXIT_FAILURE);
 	while (i < table->nop)
 	{
-		pthread_mutex_init(&table->forks[i], NULL);
+		if (pthread_mutex_init(&table->forks[i], NULL) == -1)
+			return (EXIT_FAILURE);
 		i++;
 	}
+	if (pthread_mutex_init(table->dead, NULL))
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
@@ -59,7 +66,7 @@ int	start_threading(t_table *table)
 	while (i < table->nop)
 	{
 		pthread_create(&table->allphiloso[i].tid, NULL, routine,
-				&table->allphiloso[i]);
+			&table->allphiloso[i]);
 		i++;
 	}
 	i = 0;
