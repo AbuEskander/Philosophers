@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:08:54 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/25 16:42:36 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/26 14:39:55 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,26 @@ void	*routine(void *args)
 	t_philosofo	*philoso;
 
 	philoso = (t_philosofo *)args;
-	while (1 && philoso->nuofm)
+	while (philoso->nuofm)
 	{
-		printf(" %llu ms  %d is sleeping \n", get_time_fixed()
-				- philoso->last_meal, philoso->id);
-		usleep(philoso->tts * 1000);
+		
+		sleeping(philoso);
+		thinking(philoso);
 		lock_forks(philoso);
 		printf(" %llu ms  %d has taken a fork \n", get_time_fixed()
-				- philoso->last_meal, philoso->id);
+				- philoso->sim_start, philoso->id);
 		printf(" %llu ms  %d has taken a fork \n", get_time_fixed()
-				- philoso->last_meal, philoso->id);
+				- philoso->sim_start, philoso->id);
 		printf(" %llu ms  %d is eating \n", get_time_fixed()
-				- philoso->last_meal, philoso->id);
-		usleep(philoso->tte * 1000);
+				- philoso->sim_start, philoso->id);
+		actual_sleep(get_time_fixed(),philoso->tte);
 		philoso->nuofm--;
 		unlock_forks(philoso);
 	
 	}
 	return (NULL);
 }
+/*
+ 0 200 '100' 100
+-----    ----
+*/

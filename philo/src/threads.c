@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:28:44 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/25 11:48:03 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/26 13:48:37 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	init_threads(t_table *table)
 		table->allphiloso[i].ttd = table->ttd;
 		table->allphiloso[i].tte = table->tte;
 		table->allphiloso[i].tts = table->tts;
-		table->allphiloso[i].last_meal = get_time_fixed();
+		table->allphiloso[i].sim_start = get_time_fixed();
 		table->allphiloso[i].leftf = &table->forks[i];
 		table->allphiloso[i].rightf = &table->forks[(i + 1) % table->nop];
 		i++;

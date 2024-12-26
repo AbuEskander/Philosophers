@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 12:00:20 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/25 11:44:55 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/26 14:40:04 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # define MIN_ARGS 5
 # define NOMEALCOUNT -1
 
+typedef unsigned long long t_timelen;
+
 typedef struct s_philosopho
 {
 	int				id;
@@ -31,7 +33,8 @@ typedef struct s_philosopho
 	int				ttd;
 	int				tte;
 	int				nuofm;
-	long long		last_meal;
+	t_timelen		sim_start;
+	t_timelen		wokeup;
 	pthread_mutex_t	*leftf;
 	pthread_mutex_t	*rightf;
 
@@ -68,9 +71,12 @@ size_t				ft_strlen(char *str);
 size_t				total_len(ssize_t n);
 void				*routine(void *args);
 int					init_threads(t_table *table);
-size_t				get_time_fixed(void);
+t_timelen				get_time_fixed(void);
 int					init_forks(t_table *table);
 int					start_threading(t_table *table);
 void				clean_destroyes(t_table *table);
+t_timelen     actual_sleep(t_timelen time, t_timelen time_to_wait);
+int     thinking(t_philosofo *philoso);
+int     sleeping(t_philosofo *philoso);
 
 #endif
