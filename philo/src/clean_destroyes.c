@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 11:37:25 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/26 20:12:53 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/27 17:23:14 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	clean_destroyes(t_table *table)
 	int	i;
 
 	i = 0;
-	while (i < table->nop)
+	while (i < table->nop && table->forks)
 	{
 		pthread_mutex_destroy(&table->forks[i]);
 		i++;
