@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:32:25 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/26 21:45:18 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/28 17:24:42 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 int	am_i_dead(t_philosofo *philoso)
 {
 	pthread_mutex_lock(philoso->death);
-	if ((int)(get_time_fixed() - philoso->last_meal) >= philoso->ttd)
+	if ((int)(get_time_fixed() - philoso->last_meal) > philoso->ttd)
 	{
 		if (*(philoso->did_i) == -1)
 		{
 			*(philoso->did_i) = philoso->id;
 			philoso->time_of_death = get_time_fixed();
-		  usleep(philoso->ttd * 1000);
-    }
-     pthread_mutex_unlock(philoso->death);
+			usleep(philoso->ttd * 1000);
+		}
+		pthread_mutex_unlock(philoso->death);
 		return (1);
 	}
 	pthread_mutex_unlock(philoso->death);
