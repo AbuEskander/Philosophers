@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:56:54 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/27 17:28:46 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/28 13:38:10 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,13 @@ int	main(int argc, char **argv)
 	if (validate_input(argv))
 		return (EXIT_FAILURE);
 	if (initilaize_inital_values(&table, argv))
+	{
+		display_error("Error While initalizing\n");
 		return (EXIT_FAILURE);
+	}
 	if (init_forks(&table) || init_threads(&table))
 	{
+		display_error("Error While initalizing\n");
 		clean_destroyes(&table);
 		return (EXIT_FAILURE);
 	}

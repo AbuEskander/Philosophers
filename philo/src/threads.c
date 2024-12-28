@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:28:44 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/27 17:30:16 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/28 13:39:54 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,9 @@ int	start_threading(t_table *table)
 	i = 0;
 	while (i < table->nop)
 	{
-		pthread_create(&table->allphiloso[i].tid, NULL, routine,
-			&table->allphiloso[i]);
+		if (pthread_create(&table->allphiloso[i].tid, NULL, routine,
+				&table->allphiloso[i]) != 0)
+			break ;
 		i++;
 	}
 	i = 0;
