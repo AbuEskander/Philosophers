@@ -21,9 +21,9 @@ int	am_i_dead(t_philosofo *philoso)
 		{
 			*(philoso->did_i) = philoso->id;
 			philoso->time_of_death = get_time_fixed();
-		}
-		usleep(philoso->ttd * 1000);
-		pthread_mutex_unlock(philoso->death);
+		  usleep(philoso->ttd * 1000);
+    }
+     pthread_mutex_unlock(philoso->death);
 		return (1);
 	}
 	pthread_mutex_unlock(philoso->death);
