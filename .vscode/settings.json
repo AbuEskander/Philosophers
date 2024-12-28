@@ -3,6 +3,7 @@
                 "*.ejs": "html",
                 ".env*": "dotenv",
                 "philo.h": "c",
-                "philo": "c"
+                "philo": "c",
+                "philo_bonus.h": "c"
         }
 }
