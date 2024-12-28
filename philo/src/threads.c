@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:28:44 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/28 13:39:54 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/28 14:00:58 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,27 @@ int	init_forks(t_table *table)
 int	start_threading(t_table *table)
 {
 	int	i;
+	int	fail;
 
 	i = 0;
+	fail = 0;
 	while (i < table->nop)
 	{
 		if (pthread_create(&table->allphiloso[i].tid, NULL, routine,
 				&table->allphiloso[i]) != 0)
+		{
+			pthread_mutex_lock(table->dead);
+			usleep(table->ttd);
+			pthread_mutex_unlock(table->forks);
+			fail = 1;
 			break ;
+		}
 		i++;
 	}
 	i = 0;
 	while (i < table->nop)
-	{
-		pthread_join(table->allphiloso[i].tid, NULL);
-		i++;
-	}
+		pthread_join(table->allphiloso[i++].tid, NULL);
+	if (fail)
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

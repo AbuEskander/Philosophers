@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:56:54 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/28 13:38:10 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/28 13:59:33 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,12 @@ int	main(int argc, char **argv)
 		display_error("Error While initalizing\n");
 		return (EXIT_FAILURE);
 	}
-	if (init_forks(&table) || init_threads(&table))
+	if (init_forks(&table) || init_threads(&table) || start_threading(&table))
 	{
 		display_error("Error While initalizing\n");
 		clean_destroyes(&table);
 		return (EXIT_FAILURE);
 	}
-	start_threading(&table);
 	if (table.who_is_dead != -1)
 		announce_death(&table.allphiloso[table.who_is_dead - 1]);
 	clean_destroyes(&table);
