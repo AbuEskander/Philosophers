@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 12:16:17 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/28 22:59:44 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/30 11:03:08 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,5 @@ int	main(int argc, char **argv)
 		display_error("Error While initalizing\n");
 		return (EXIT_FAILURE);
 	}
+	
 }

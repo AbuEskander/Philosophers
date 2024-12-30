@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 12:15:00 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/28 22:52:20 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/30 12:06:09 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdio.h>
 # include <string.h>
-
 # include <pthread.h>
 # include <semaphore.h>
 # include <stdio.h>
@@ -56,8 +55,8 @@ typedef struct s_table
 	int						tte;
 	int						nuofm;
 	t_philosofo				*allphiloso;
-	pthread_mutex_t			*forks;
-	pthread_mutex_t			*dead;
+	sem_t			*forks;
+	sem_t			*dead;
 	int						who_is_dead;
 }							t_table;
 
@@ -78,4 +77,7 @@ int							check_numbers(char **number);
 int							onlydigits(char *str);
 size_t						ft_strlen(char *str);
 size_t						total_len(ssize_t n);
+t_timelen	get_time_fixed(void);
+int    							init_process(t_table *s);
+
 #endif
