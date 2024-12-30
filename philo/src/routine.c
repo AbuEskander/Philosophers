@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:08:54 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/26 21:45:51 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/30 15:56:03 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	*routine(void *args)
 	philoso = (t_philosofo *)args;
 	if (philoso->leftf == philoso->rightf)
 	{
+		thinking(philoso);
 		while (!am_i_dead(philoso))
 			;
 		return (NULL);
