@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 12:16:17 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/30 11:03:08 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/01/01 01:49:15 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,11 @@ int	main(int argc, char **argv)
 		display_error("Error While initalizing\n");
 		return (EXIT_FAILURE);
 	}
+	if (init_forks(&table) || init_process(&table) || start_processing(&table))
+	{
+		clean_destroyes(&table,-1);
+		perror("ERROR");
+	}
+	clean_destroyes(&table,-1);
 	
 }

@@ -1,0 +1,7 @@
+{
+        "files.associations": {
+                "*.ejs": "html",
+                ".env*": "dotenv",
+                "philo_bonus.h": "c"
+        }
+}

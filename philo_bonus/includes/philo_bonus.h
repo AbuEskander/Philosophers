@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 12:15:00 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/30 16:35:00 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/01/01 01:49:32 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,21 @@
 # include <stdio.h>
 # include <string.h>
 # include <pthread.h>
+# include <fcntl.h>
 # include <semaphore.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <sys/time.h>
+# include <sys/wait.h>
 # include <unistd.h>
+# include <signal.h>
 # define MAX_ARGS 6
 # define MIN_ARGS 5
 # define NOMEALCOUNT -1
-
+# define DEATH "dead"
+# define FORKS "FORKS"
+# define WHO_CAN_EAT "BATATA"
 typedef unsigned long long	t_timelen;
 
 typedef struct s_philosopho
@@ -39,8 +44,7 @@ typedef struct s_philosopho
 	t_timelen				sim_start;
 	t_timelen				wokeup;
 	t_timelen				last_meal;
-	sem_t			*leftf;
-	sem_t			*rightf;
+	sem_t			*forks;
 	sem_t			*death;
 	int						*did_i;
 	t_timelen				time_of_death;
@@ -56,6 +60,7 @@ typedef struct s_table
 	int						nuofm;
 	t_philosofo				*allphiloso;
 	sem_t			*forks;
+	sem_t			*wce;
 	sem_t			*dead;
 	int						who_is_dead;
 }							t_table;
@@ -79,5 +84,8 @@ size_t						ft_strlen(char *str);
 size_t						total_len(ssize_t n);
 t_timelen	get_time_fixed(void);
 int    							init_process(t_table *s);
+int	init_forks(t_table *table);
+void	clean_destroyes(t_table *table,int pid);
+int	start_processing(t_table *table);
 
 #endif
