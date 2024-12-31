@@ -2,4 +2,4 @@
 ./philo/.vscode
 ./philo_bonus/.vscode
 **/**.o
-philo
+

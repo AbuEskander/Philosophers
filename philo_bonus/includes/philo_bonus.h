@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 12:15:00 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/30 12:06:09 by abueskander      ###   ########.fr       */
+/*   Updated: 2024/12/30 16:35:00 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ typedef struct s_philosopho
 	t_timelen				sim_start;
 	t_timelen				wokeup;
 	t_timelen				last_meal;
-	pthread_mutex_t			*leftf;
-	pthread_mutex_t			*rightf;
-	pthread_mutex_t			*death;
+	sem_t			*leftf;
+	sem_t			*rightf;
+	sem_t			*death;
 	int						*did_i;
 	t_timelen				time_of_death;
 
