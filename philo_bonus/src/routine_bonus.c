@@ -6,18 +6,31 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 12:19:44 by bismail           #+#    #+#             */
-/*   Updated: 2025/01/01 22:10:16 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/01/01 22:34:49 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo_bonus.h>
 
-
+static int	solo_death(t_philosofo *philoso)
+{
+	while(1)
+	{
+			if(thinking(philoso))
+				break;
+			actual_sleep(get_time_fixed(),philoso->ttd,philoso);
+			if(am_i_dead_bonus(philoso))
+				break;
+	}
+	return (EXIT_FAILURE);
+}
 void    routine(t_philosofo *philoso,t_table *table)
 {
 	int	id = 0;
         philoso->child_id = getpid();
-	while (philoso->nuofm)
+	if(table->nop == 1)
+		solo_death(philoso);
+	while (philoso->nuofm && table->nop > 1)
 	{
 		if (eating(philoso))
 			break ;
