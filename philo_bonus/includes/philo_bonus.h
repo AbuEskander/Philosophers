@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 12:15:00 by abueskander       #+#    #+#             */
-/*   Updated: 2025/01/01 18:37:23 by bismail          ###   ########.fr       */
+/*   Updated: 2025/01/01 21:58:54 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef struct s_philosopho
 {
 	int						id;
 	pid_t						child_id;
-	pthread_t				tid;
 	int						tts;
 	int						ttd;
 	int						tte;
@@ -75,9 +74,9 @@ enum						e_inputs
 	TIMETOSLEEP,
 	NUMBEROFMEALS
 };
-int	eating(t_philosofo *philoso);
-int	sleeping(t_philosofo *philoso);
-int     thinking (t_philosofo *philoso);
+int	eating(t_philosofo *philoso );
+int	sleeping(t_philosofo *philoso );
+int     thinking (t_philosofo *philoso );
 void						display_error(char *str);
 void						ft_putstr(char *str, int fd);
 long						ft_atoi(const char *nptr);
@@ -95,8 +94,9 @@ void     lock_forks(t_philosofo *philoso);
 void     unlock_forks(t_philosofo *philoso);
 t_timelen	actual_sleep(t_timelen time, t_timelen time_to_wait,
 		t_philosofo *philoso);
-void    routine(t_philosofo *philoso);
+void    routine(t_philosofo *philoso, t_table *table);
 int     am_i_dead_bonus(t_philosofo *philoso);
 void	announce_death(t_philosofo *philoso);
+void    unlink_semaphores(t_philosofo *philoso,t_table * table);
 
 #endif

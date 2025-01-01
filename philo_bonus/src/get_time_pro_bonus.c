@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_time_pro_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 22:53:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/01/01 12:23:43 by bismail          ###   ########.fr       */
+/*   Updated: 2025/01/01 21:13:48 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ t_timelen	get_time_fixed(void)
 t_timelen	actual_sleep(t_timelen time, t_timelen time_to_wait,
 		t_philosofo *philoso)
 {
-	(void)philoso;
-	while (get_time_fixed() - time < time_to_wait);
+	while (get_time_fixed() - time < time_to_wait)
+	{
+		if(am_i_dead_bonus(philoso))
+			break;
+	}
 	return (0);
 }

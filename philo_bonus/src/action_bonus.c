@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   action.c                                           :+:      :+:    :+:   */
+/*   action_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 18:33:36 by bismail           #+#    #+#             */
-/*   Updated: 2025/01/01 18:41:10 by bismail          ###   ########.fr       */
+/*   Updated: 2025/01/01 21:36:51 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo_bonus.h>
 
 
-int     eating(t_philosofo *philoso)
+int     eating(t_philosofo *philoso )
 {
         lock_forks(philoso);
         if(am_i_dead_bonus(philoso))
@@ -21,6 +21,11 @@ int     eating(t_philosofo *philoso)
                 unlock_forks(philoso);
                 return(1);
         }
+        printf(" %llu ms  %d has taken a fork  \n", get_time_fixed() - philoso->sim_start,
+		philoso->id);
+        sem_wait(philoso->forks);
+        printf(" %llu ms  %d has taken a fork  \n", get_time_fixed() - philoso->sim_start,
+		philoso->id);
         printf(" %llu ms  %d is eating \n", get_time_fixed() - philoso->sim_start,
 		philoso->id);
         philoso->last_meal = get_time_fixed();

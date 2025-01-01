@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 12:16:17 by abueskander       #+#    #+#             */
-/*   Updated: 2025/01/01 18:32:19 by bismail          ###   ########.fr       */
+/*   Updated: 2025/01/01 22:12:28 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	main(int argc, char **argv)
 		clean_destroyes(&table,-1);
 		perror("ERROR");
 	}
-	if(table.who_is_dead != -1)
+	if(table.who_is_dead > 0)
 		announce_death(&table.allphiloso[table.who_is_dead -1]);
 	clean_destroyes(&table,-1);
 	return(EXIT_SUCCESS);

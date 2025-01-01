@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   processes_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 10:54:20 by abueskander       #+#    #+#             */
-/*   Updated: 2025/01/01 18:40:37 by bismail          ###   ########.fr       */
+/*   Updated: 2025/01/01 22:10:58 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int    init_process(t_table *table)
 		table->allphiloso[i].forks = table->forks;
 		table->allphiloso[i].wce = table->wce;
 		table->allphiloso[i].death = table->dead;
-		// table->allphiloso[i].did_i = &table->who_is_dead;
+		table->allphiloso[i].did_i = &table->who_is_dead;
                 i++;
         }
 	return (EXIT_SUCCESS);
@@ -58,6 +58,27 @@ int	init_forks(t_table *table)
 	return (EXIT_SUCCESS);
 }
 
+static	void	wait_for_childs(t_table *table)
+{
+	int	i;
+	int	exit_status;
+	i = 0;
+
+	
+	while(i++ < table->nop)
+	{
+		waitpid(-1,&exit_status,0);
+		if(table->who_is_dead == -1)	
+		{
+			sem_wait(table->dead);
+			table->who_is_dead = ((exit_status & 0xff00) >> 8);
+			if(table->who_is_dead)
+				table->allphiloso[table->who_is_dead - 1].time_of_death = get_time_fixed();
+			usleep(table->ttd * 1000);
+			sem_post(table->dead);	
+		}
+	}
+}
 int	start_processing(t_table *table)
 {
 	int	pid;
@@ -78,15 +99,10 @@ int	start_processing(t_table *table)
 		}
 		if (pid  == 0)
 		{
-			routine(&table->allphiloso[who]);
+			routine(&table->allphiloso[who],table);
 		}
 		who++;
 	}
-	
-	i = 0;
-	while(i++ < table->nop)
-	{
-		wait(0);
-	}
+	wait_for_childs(table);
 	return (EXIT_SUCCESS);
 }

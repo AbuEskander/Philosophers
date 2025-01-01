@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   routine_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 12:19:44 by bismail           #+#    #+#             */
-/*   Updated: 2025/01/01 18:41:28 by bismail          ###   ########.fr       */
+/*   Updated: 2025/01/01 22:10:16 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo_bonus.h>
 
 
-void    routine(t_philosofo *philoso)
+void    routine(t_philosofo *philoso,t_table *table)
 {
+	int	id = 0;
         philoso->child_id = getpid();
 	while (philoso->nuofm)
 	{
@@ -26,5 +27,10 @@ void    routine(t_philosofo *philoso)
 			break ;
 		philoso->nuofm--;
 	}
-        exit(0);
+	if(philoso->nuofm == 0)
+		id = 0;
+	else
+		id = philoso->id;
+	unlink_semaphores(philoso,table);
+        exit(id);
 }
