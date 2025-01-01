@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   processes_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 10:54:20 by abueskander       #+#    #+#             */
-/*   Updated: 2025/01/01 01:50:51 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/01/01 18:40:37 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int    init_process(t_table *table)
         i = 0;
         while (i < table->nop)
         {
-                table->allphiloso[i].id = i + 1;
+		table->allphiloso[i].id = i + 1;
 		table->allphiloso[i].nuofm = table->nuofm;
 		table->allphiloso[i].ttd = table->ttd;
 		table->allphiloso[i].tte = table->tte;
@@ -27,8 +27,9 @@ int    init_process(t_table *table)
 		table->allphiloso[i].sim_start = get_time_fixed();
 		table->allphiloso[i].last_meal = get_time_fixed();
 		table->allphiloso[i].forks = table->forks;
+		table->allphiloso[i].wce = table->wce;
 		table->allphiloso[i].death = table->dead;
-		table->allphiloso[i].did_i = &table->who_is_dead;
+		// table->allphiloso[i].did_i = &table->who_is_dead;
                 i++;
         }
 	return (EXIT_SUCCESS);
@@ -42,7 +43,6 @@ int	init_forks(t_table *table)
 	sem_unlink(WHO_CAN_EAT);
 	sem_unlink(FORKS);
 	sem_unlink(DEATH);
-
 	forks = sem_open(FORKS,O_CREAT | O_EXCL,0600, table->nop);
 	if(forks == SEM_FAILED)
 		return (EXIT_FAILURE);
@@ -62,7 +62,9 @@ int	start_processing(t_table *table)
 {
 	int	pid;
 	int	i;
+	int	who;
 
+	who = 0;
 	pid = -1;
 	i = 0;
 	while(i++ < table->nop && pid != 0)
@@ -74,23 +76,13 @@ int	start_processing(t_table *table)
 				kill(0,SIGKILL);
 			return(EXIT_FAILURE);
 		}
-			
+		if (pid  == 0)
+		{
+			routine(&table->allphiloso[who]);
+		}
+		who++;
 	}
-	if (pid  == 0)
-	{
-		sem_wait(table->wce);
-		sem_wait(table->forks);
-		printf("I took a fork \n");
-		sem_wait(table->forks);
-		printf("I took a second fork \n");
-		sleep(2);
-		sem_post(table->forks);
-		sem_post(table->forks);
-		sem_post(table->wce);
-		printf("God bless\n");
-		clean_destroyes(table,pid);
-		exit(3);
-	}
+	
 	i = 0;
 	while(i++ < table->nop)
 	{

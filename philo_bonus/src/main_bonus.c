@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 12:16:17 by abueskander       #+#    #+#             */
-/*   Updated: 2025/01/01 01:49:15 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/01/01 18:32:19 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static int	initilaize_inital_values(t_table *philoso, char **inputs)
 	philoso->who_is_dead = -1;
 	philoso->forks = NULL;
 	philoso->dead = NULL;
+	philoso->wce = NULL;
 	philoso->allphiloso = malloc(sizeof(t_philosofo) * philoso->nop);
 	if (!philoso->allphiloso)
 		return (EXIT_FAILURE);
@@ -60,6 +61,8 @@ int	main(int argc, char **argv)
 		clean_destroyes(&table,-1);
 		perror("ERROR");
 	}
+	if(table.who_is_dead != -1)
+		announce_death(&table.allphiloso[table.who_is_dead -1]);
 	clean_destroyes(&table,-1);
-	
+	return(EXIT_SUCCESS);
 }
