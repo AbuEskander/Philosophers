@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 12:19:44 by bismail           #+#    #+#             */
-/*   Updated: 2025/01/02 13:13:58 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/01/02 15:20:06 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 static int	solo_death(t_philosofo *philoso)
 {
 	while (1)
-	{
-		if (thinking(philoso))
-			break ;
+	{	
 		actual_sleep(get_time_fixed(), philoso->ttd, philoso);
 		if (am_i_dead_bonus(philoso))
 			break ;
@@ -32,7 +30,10 @@ void	routine(t_philosofo *philoso, t_table *table)
 	id = 0;
 	philoso->child_id = getpid();
 	if (table->nop == 1)
+	{
+		thinking(philoso);
 		solo_death(philoso);
+	}
 	while (philoso->nuofm && table->nop > 1)
 	{
 		if (eating(philoso))
