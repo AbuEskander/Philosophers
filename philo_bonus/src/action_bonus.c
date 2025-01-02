@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 18:33:36 by bismail           #+#    #+#             */
-/*   Updated: 2025/01/02 15:13:25 by bismail          ###   ########.fr       */
+/*   Updated: 2025/01/02 15:14:39 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 int	eating(t_philosofo *philoso)
 {
 	lock_forks(philoso);
-	if (am_i_dead_bonus(philoso))
-	{
-		unlock_forks(philoso);
-		return (1);
-	}
 	printf(" %llu ms  %d has taken a fork  \n", get_time_fixed()
 		- philoso->sim_start, philoso->id);
 	sem_wait(philoso->forks);
