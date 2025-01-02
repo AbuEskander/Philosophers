@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   action_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 18:33:36 by bismail           #+#    #+#             */
-/*   Updated: 2025/01/02 13:13:16 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/01/02 15:13:25 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ int	eating(t_philosofo *philoso)
 	printf(" %llu ms  %d has taken a fork  \n", get_time_fixed()
 		- philoso->sim_start, philoso->id);
 	sem_wait(philoso->forks);
+	if (am_i_dead_bonus(philoso))
+	{
+		unlock_forks(philoso);
+		return (1);
+	}
 	printf(" %llu ms  %d has taken a fork  \n", get_time_fixed()
 		- philoso->sim_start, philoso->id);
 	printf(" %llu ms  %d is eating \n", get_time_fixed() - philoso->sim_start,
