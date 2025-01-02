@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 10:54:20 by abueskander       #+#    #+#             */
-/*   Updated: 2025/01/02 13:15:43 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/01/02 14:28:19 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ int	init_forks(t_table *table)
 	death = sem_open(DEATH, O_CREAT | O_EXCL, 0600, 1);
 	if (death == SEM_FAILED)
 		return (EXIT_FAILURE);
-	wce = sem_open(WHO_CAN_EAT, O_CREAT | O_EXCL, 0600, (table->nop / 2));
+	wce = sem_open(WHO_CAN_EAT, O_CREAT | O_EXCL, 0600,
+			(table->nop / 2) + (table->nop % 2));
 	if (wce == SEM_FAILED)
 		return (EXIT_FAILURE);
 	table->forks = forks;
