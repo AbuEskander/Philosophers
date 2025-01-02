@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 12:19:44 by bismail           #+#    #+#             */
-/*   Updated: 2025/01/01 22:34:49 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/01/02 13:13:58 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,24 @@
 
 static int	solo_death(t_philosofo *philoso)
 {
-	while(1)
+	while (1)
 	{
-			if(thinking(philoso))
-				break;
-			actual_sleep(get_time_fixed(),philoso->ttd,philoso);
-			if(am_i_dead_bonus(philoso))
-				break;
+		if (thinking(philoso))
+			break ;
+		actual_sleep(get_time_fixed(), philoso->ttd, philoso);
+		if (am_i_dead_bonus(philoso))
+			break ;
 	}
 	return (EXIT_FAILURE);
 }
-void    routine(t_philosofo *philoso,t_table *table)
+
+void	routine(t_philosofo *philoso, t_table *table)
 {
-	int	id = 0;
-        philoso->child_id = getpid();
-	if(table->nop == 1)
+	int	id;
+
+	id = 0;
+	philoso->child_id = getpid();
+	if (table->nop == 1)
 		solo_death(philoso);
 	while (philoso->nuofm && table->nop > 1)
 	{
@@ -40,10 +43,10 @@ void    routine(t_philosofo *philoso,t_table *table)
 			break ;
 		philoso->nuofm--;
 	}
-	if(philoso->nuofm == 0)
+	if (philoso->nuofm == 0)
 		id = 0;
 	else
 		id = philoso->id;
-	unlink_semaphores(philoso,table);
-        exit(id);
+	unlink_semaphores(philoso, table);
+	exit(id);
 }

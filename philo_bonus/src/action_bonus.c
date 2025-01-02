@@ -6,41 +6,40 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 18:33:36 by bismail           #+#    #+#             */
-/*   Updated: 2025/01/01 21:36:51 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/01/02 13:13:16 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo_bonus.h>
 
-
-int     eating(t_philosofo *philoso )
+int	eating(t_philosofo *philoso)
 {
-        lock_forks(philoso);
-        if(am_i_dead_bonus(philoso))
-        {
-                unlock_forks(philoso);
-                return(1);
-        }
-        printf(" %llu ms  %d has taken a fork  \n", get_time_fixed() - philoso->sim_start,
+	lock_forks(philoso);
+	if (am_i_dead_bonus(philoso))
+	{
+		unlock_forks(philoso);
+		return (1);
+	}
+	printf(" %llu ms  %d has taken a fork  \n", get_time_fixed()
+		- philoso->sim_start, philoso->id);
+	sem_wait(philoso->forks);
+	printf(" %llu ms  %d has taken a fork  \n", get_time_fixed()
+		- philoso->sim_start, philoso->id);
+	printf(" %llu ms  %d is eating \n", get_time_fixed() - philoso->sim_start,
 		philoso->id);
-        sem_wait(philoso->forks);
-        printf(" %llu ms  %d has taken a fork  \n", get_time_fixed() - philoso->sim_start,
-		philoso->id);
-        printf(" %llu ms  %d is eating \n", get_time_fixed() - philoso->sim_start,
-		philoso->id);
-        philoso->last_meal = get_time_fixed();
-        actual_sleep(get_time_fixed(),philoso->tte,philoso);
-        unlock_forks(philoso);
-        return (EXIT_SUCCESS);
+	philoso->last_meal = get_time_fixed();
+	actual_sleep(get_time_fixed(), philoso->tte, philoso);
+	unlock_forks(philoso);
+	return (EXIT_SUCCESS);
 }
 
-int     thinking (t_philosofo *philoso)
+int	thinking(t_philosofo *philoso)
 {
-        if(am_i_dead_bonus(philoso))
-                return (1);
-        printf(" %llu ms  %d is thinking  \n", get_time_fixed()
+	if (am_i_dead_bonus(philoso))
+		return (1);
+	printf(" %llu ms  %d is thinking  \n", get_time_fixed()
 		- philoso->sim_start, philoso->id);
-        return (0);
+	return (0);
 }
 
 int	sleeping(t_philosofo *philoso)

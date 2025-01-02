@@ -58,11 +58,11 @@ int	main(int argc, char **argv)
 	}
 	if (init_forks(&table) || init_process(&table) || start_processing(&table))
 	{
-		clean_destroyes(&table,-1);
+		clean_destroyes(&table, -1);
 		perror("ERROR");
 	}
-	if(table.who_is_dead > 0)
-		announce_death(&table.allphiloso[table.who_is_dead -1]);
-	clean_destroyes(&table,-1);
-	return(EXIT_SUCCESS);
+	if (table.who_is_dead > 0)
+		announce_death(&table.allphiloso[table.who_is_dead - 1]);
+	clean_destroyes(&table, -1);
+	return (EXIT_SUCCESS);
 }
