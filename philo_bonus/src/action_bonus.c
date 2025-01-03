@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   action_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 18:33:36 by bismail           #+#    #+#             */
-/*   Updated: 2025/01/02 15:15:27 by bismail          ###   ########.fr       */
+/*   Updated: 2025/01/03 21:19:15 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	thinking(t_philosofo *philoso)
 		return (1);
 	printf(" %llu ms  %d is thinking  \n", get_time_fixed()
 		- philoso->sim_start, philoso->id);
+	actual_sleep(get_time_fixed(), 5, philoso);
 	return (0);
 }
 

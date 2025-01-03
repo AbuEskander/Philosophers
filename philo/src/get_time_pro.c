@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 22:30:59 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/26 21:46:01 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/01/03 21:22:03 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,16 @@ t_timelen	get_time_fixed(void)
 t_timelen	actual_sleep(t_timelen time, t_timelen time_to_wait,
 		t_philosofo *philoso)
 {
-	while (get_time_fixed() - time < time_to_wait)
+	t_timelen	current;
+
+	current = get_time_fixed();
+	while (current - time < time_to_wait)
 	{
+		current = get_time_fixed();
+		while (current < time)
+			current = get_time_fixed();
 		if (am_i_dead(philoso))
-			return (1);
+			break ;
 	}
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 12:19:44 by bismail           #+#    #+#             */
-/*   Updated: 2025/01/02 15:20:06 by bismail          ###   ########.fr       */
+/*   Updated: 2025/01/03 21:13:33 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	solo_death(t_philosofo *philoso)
 {
 	while (1)
-	{	
+	{
 		actual_sleep(get_time_fixed(), philoso->ttd, philoso);
 		if (am_i_dead_bonus(philoso))
 			break ;
