@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:28:44 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/28 14:00:58 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/01/06 07:18:32 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	init_threads(t_table *table)
 		table->allphiloso[i].leftf = &table->forks[i];
 		table->allphiloso[i].rightf = &table->forks[(i + 1) % table->nop];
 		table->allphiloso[i].death = table->dead;
+		table->allphiloso[i].print = table->print;
 		table->allphiloso[i].did_i = &table->who_is_dead;
 		i++;
 	}
@@ -52,7 +53,10 @@ int	init_forks(t_table *table)
 	table->dead = malloc(sizeof(pthread_mutex_t));
 	if (!table->dead)
 		return (EXIT_FAILURE);
-	pthread_mutex_init(table->dead, NULL);
+	table->print = malloc(sizeof(pthread_mutex_t));
+	if (!table->print)
+		return (EXIT_FAILURE);
+	pthread_mutex_init(table->print, NULL);
 	return (EXIT_SUCCESS);
 }
 

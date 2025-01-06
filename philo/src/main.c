@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:56:54 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/28 13:59:33 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/01/06 07:17:10 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static int	initilaize_inital_values(t_table *philoso, char **inputs)
 	philoso->who_is_dead = -1;
 	philoso->forks = NULL;
 	philoso->dead = NULL;
+	philoso->print = NULL;
 	philoso->allphiloso = malloc(sizeof(t_philosofo) * philoso->nop);
 	if (!philoso->allphiloso)
 		return (EXIT_FAILURE);

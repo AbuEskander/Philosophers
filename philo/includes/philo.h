@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 12:00:20 by abueskander       #+#    #+#             */
-/*   Updated: 2024/12/28 22:48:38 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/01/06 07:17:42 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_philosopho
 	pthread_mutex_t			*leftf;
 	pthread_mutex_t			*rightf;
 	pthread_mutex_t			*death;
+	pthread_mutex_t			*print;
 	int						*did_i;
 	t_timelen				time_of_death;
 
@@ -54,6 +55,7 @@ typedef struct s_table
 	t_philosofo				*allphiloso;
 	pthread_mutex_t			*forks;
 	pthread_mutex_t			*dead;
+	pthread_mutex_t 		*print;
 	int						who_is_dead;
 }							t_table;
 
