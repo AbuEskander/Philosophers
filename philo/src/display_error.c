@@ -16,5 +16,4 @@ void	display_error(char *str)
 {
 	ft_putstr("Error: ", 2);
 	ft_putstr(str, 2);
-	exit(1);
 }
