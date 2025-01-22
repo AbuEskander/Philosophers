@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:28:44 by abueskander       #+#    #+#             */
-/*   Updated: 2025/01/22 12:54:59 by bismail          ###   ########.fr       */
+/*   Updated: 2025/01/22 12:59:38 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	init_forks(t_table *table)
 	table->print = malloc(sizeof(pthread_mutex_t));
 	if (!table->print)
 		return (EXIT_FAILURE);
-	pthread_mutex_init(table->print, NULL);	
+	pthread_mutex_init(table->print, NULL);
 	pthread_mutex_init(table->dead, NULL);
 	return (EXIT_SUCCESS);
 }

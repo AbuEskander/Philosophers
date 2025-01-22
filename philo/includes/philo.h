@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 12:00:20 by abueskander       #+#    #+#             */
-/*   Updated: 2025/01/06 07:17:42 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/01/22 12:59:06 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct s_table
 	t_philosofo				*allphiloso;
 	pthread_mutex_t			*forks;
 	pthread_mutex_t			*dead;
-	pthread_mutex_t 		*print;
+	pthread_mutex_t			*print;
 	int						who_is_dead;
 }							t_table;
 
