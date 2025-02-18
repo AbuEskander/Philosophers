@@ -15,13 +15,17 @@
 int	am_i_dead(t_philosofo *philoso)
 {
 	pthread_mutex_lock(philoso->death);
+  if (*(philoso->did_i) != -1)
+  {
+      pthread_mutex_unlock(philoso->death);
+      return (1);
+  }
 	if ((int)(get_time_fixed() - philoso->last_meal) > philoso->ttd)
 	{
 		if (*(philoso->did_i) == -1)
 		{
 			*(philoso->did_i) = philoso->id;
 			philoso->time_of_death = get_time_fixed();
-			usleep(philoso->ttd * 1000);
 		}
 		pthread_mutex_unlock(philoso->death);
 		return (1);
